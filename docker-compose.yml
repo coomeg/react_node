@@ -1,0 +1,46 @@
+version: "2"
+services:
+  node_react:
+    build: ./docker/node
+    environment:
+      - NODE_ENV=test
+    volumes:
+      - ./react-app:/usr/src/app
+    ports:
+      - "3002:3000"
+    tty: true
+
+  express_react: #name of the second service
+    build: express-server # specify the directory of the Dockerfile
+    environment:
+      - NODE_ENV=test
+    volumes:                        # mount workdir
+      - ./express-server:/projects
+    ports:
+      - "3000:3000" #specify ports forewarding
+      - "9229:9229"
+    tty: true
+
+    command: [sh, -c, npm install && /bin/bash]
+
+  # mysql
+  db_react:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: reactapp
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+    volumes:
+      - .\data\mysql:/var/lib/mysql
+    ports:
+      - "3305:3306"
+
+  phpmyadmin_react:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=db_react
+      - PMA_USER=root
+      - PMA_PASSWORD=password
+    ports:
+      - 8102:80

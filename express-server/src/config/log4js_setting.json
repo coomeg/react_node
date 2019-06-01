@@ -1,0 +1,10 @@
+{
+    "appenders": { 
+        "system": { "type": "dateFile", "filename": "logs/system.log", "pattern": "-yyyy-MM-dd" },
+        "access": { "type": "dateFile", "filename": "logs/access.log", "pattern": "-yyyy-MM-dd" } 
+    },
+    "categories": { 
+        "default": { "appenders": ["system"], "level": "trace" },
+        "web": { "appenders": ["access"], "level": "trace" }
+    }
+}

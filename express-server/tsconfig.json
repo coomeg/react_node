@@ -1,0 +1,35 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "module": "commonjs",
+    "strict": false,
+    "esModuleInterop": true,
+    "outDir": "./dist",
+    "target": "ES2016",
+    "rootDir" : "./src",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "sourceMap": true,
+    "baseUrl": "src",
+    "sourceRoot": "src",
+    "paths": {
+      "@routes/*": ["routes/*"],
+      "@controller/*": ["controller/*"],
+      "@db/*": ["db/*"],
+    },
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2017",
+      "dom"
+    ]
+  },
+  "include": [
+      "src/**/*"
+  ],
+  "exclude": [
+      "node_modules",
+      "**/*.spec.ts"
+  ]
+}
