@@ -22,7 +22,7 @@
     "gulp-copy": "^4.0.1",
     "gulp-typescript": "^5.0.1",
     "gulp-watch": "^5.0.1",
-    "log4js": "^4.0.2",
+    "log4js": "^6.4.0",
     "mongoose": "^5.4.18",
     "mysql": "^2.16.0",
     "mysql2": "^1.6.5",
